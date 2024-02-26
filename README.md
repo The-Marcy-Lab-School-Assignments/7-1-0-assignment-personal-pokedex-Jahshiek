@@ -1,24 +1,23 @@
 # Personal Pokedex
 
 **Table of Contents**
-- [Personal Pokedex](#personal-pokedex)
-  - [Short Responses](#short-responses)
-  - [App Overview](#app-overview)
-  - [Features](#features)
-  - [Set Up](#set-up)
-    - [JSON Server API](#json-server-api)
-    - [A Reminder About POSTing](#a-reminder-about-posting)
-  - [Steps For Completing The First Feature In Assignment:](#steps-for-completing-the-first-feature-in-assignment)
-    - [0. Check out the PokemonCollection](#0-check-out-the-pokemoncollection)
-    - [1. Create the context](#1-create-the-context)
-    - [2. Complete the Provider component](#2-complete-the-provider-component)
-    - [3. Wrap the App in the provider](#3-wrap-the-app-in-the-provider)
-    - [4. One More Step To Test:](#4-one-more-step-to-test)
-    - [5. Fix the `PokemonCard`](#5-fix-the-pokemoncard)
-    - [6. Fetch Pokemon Data](#6-fetch-pokemon-data)
-  - [You're on your own now](#youre-on-your-own-now)
-    - [Tip: Posting Sprites](#tip-posting-sprites)
-    - [Bonus:](#bonus)
+- [Short Responses](#short-responses)
+- [App Overview](#app-overview)
+- [Technical Checklist](#technical-checklist)
+- [Set Up](#set-up)
+  - [JSON Server API](#json-server-api)
+  - [A Reminder About POSTing](#a-reminder-about-posting)
+- [Steps For Completing The First Feature In Assignment:](#steps-for-completing-the-first-feature-in-assignment)
+  - [0. Check out the PokemonCollection](#0-check-out-the-pokemoncollection)
+  - [1. Create the context](#1-create-the-context)
+  - [2. Complete the Provider component](#2-complete-the-provider-component)
+  - [3. Wrap the App in the provider](#3-wrap-the-app-in-the-provider)
+  - [4. One More Step To Test:](#4-one-more-step-to-test)
+  - [5. Fix the `PokemonCard`](#5-fix-the-pokemoncard)
+  - [6. Fetch Pokemon Data](#6-fetch-pokemon-data)
+- [You're on your own now](#youre-on-your-own-now)
+  - [Tip: Posting Sprites](#tip-posting-sprites)
+  - [Bonus:](#bonus)
 
 
 
@@ -37,14 +36,12 @@ In this assignment, you will build a React front-end application for browsing yo
 
 ![demo](./images/demo.gif)
 
-## Features
+## Technical Checklist
 
 - [ ] On load of the page, a user see a list of pokemon cards displaying each pokemon's name, front sprite, and HP level.
 - [ ] A user can fill out and submit the form to create a new pokemon. This will display the new pokemon on the page and the new pokemon data should persist, even after the page is refreshed. This means you'll have to make a POST request to our JSON Server API!
 - [ ] A user can use the search bar to filter pokemon by name.
 - [ ] A user can click on a pokemon card to toggle seeing its front sprite or back sprite.
-
-**Requirements**:
 - [ ] The form must be a controlled component.
 - [ ] This assignment must use React Context.
 
