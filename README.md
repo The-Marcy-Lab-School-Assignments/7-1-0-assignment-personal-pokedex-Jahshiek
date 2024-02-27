@@ -1,8 +1,16 @@
 # Personal Pokedex
 
+In this assignment, you will build a React front-end application for browsing your collection of pokemon. You can view the pokemon you've already "caught", add new pokemon to your collection, and filter pokemon. In this app, you will practice:
+* Using `useState` to manage the various pieces of state in your application
+* Using the React Context API to establish global state values
+* Using `useEffect` and `fetch` to read from a dummy API
+* Creating controlled components
+* Handling click events
+
+![demo](./images/demo.gif)
+
 **Table of Contents**
 - [Short Responses](#short-responses)
-- [App Overview](#app-overview)
 - [Technical Checklist](#technical-checklist)
 - [Set Up](#set-up)
   - [JSON Server API](#json-server-api)
@@ -19,31 +27,37 @@
   - [Tip: Posting Sprites](#tip-posting-sprites)
   - [Bonus:](#bonus)
 
-
-
 ## Short Responses
 
-Do them first!
-
-## App Overview
-
-In this assignment, you will build a React front-end application for browsing your collection of pokemon. You can view the pokemon you've already "caught", add new pokemon to your collection, and filter pokemon. In this app, you will practice:
-* Using `useState` to manage the various pieces of state in your application
-* Using the React Context API to establish global state values
-* Using `useEffect` and `fetch` to read from a dummy API
-* Creating controlled components
-* Handling click events
-
-![demo](./images/demo.gif)
+Tired of hearing this yet? Do them first!
 
 ## Technical Checklist
 
+There are 14 tasks to complete and 2 bonuses.
+
+Your goal is to meet at least 75% of these requirements to complete the assignment. But don't stop there! Shoot for 100%!
+
+**Functionality**
 - [ ] On load of the page, a user see a list of pokemon cards displaying each pokemon's name, front sprite, and HP level.
 - [ ] A user can fill out and submit the form to create a new pokemon. This will display the new pokemon on the page and the new pokemon data should persist, even after the page is refreshed. This means you'll have to make a POST request to our JSON Server API!
 - [ ] A user can use the search bar to filter pokemon by name.
 - [ ] A user can click on a pokemon card to toggle seeing its front sprite or back sprite.
+- [ ] Bonus: A user can additionally filter pokemon by HP
+
+**React Fundamentals**
+- [ ] Component names use PascalCase (`MyComponent` instead of `myComponent`)
+- [ ] Props are extracted in child components using destructuring
+- [ ] `useState` is used to manage state
+- [ ] `useEffect` is used to perform an asynchronous fetch call.
 - [ ] The form must be a controlled component.
-- [ ] This assignment must use React Context.
+- [ ] The project uses React Context.
+- [ ] The project uses `useContext` at least once
+
+**Miscellaneous**
+- [ ] Used Vite to create the project
+- [ ] Each component is in its own file (1 export per file)
+- [ ] At no point did you ever use any vanilla DOM JS methods (e.g. `document.querySelector` or `document.createElement`)
+- [ ] Bonus: Your project has some extra CSS styling!
 
 **Note:** We are requiring you use React Context for this assignment, however it does not mean that Context is necessarily the right tool for this job. For a project this small, Context may not be the best solution. However, for now, use it!
 
@@ -239,4 +253,4 @@ You can find pokemon sprites in this [GitHub Repo](https://github.com/PokeAPI/sp
 
 Add a feature to **additionally** filter pokemon by the HP amount. You can use any type of input, but we recommend using a [range input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range). For example, if the user sets the range value to 50, then only show pokemon with an HP value _equal to or over_ 50. Remember to store that value of the input in state!
 
-[⬆ Jump back to the top ⬆](#features) to see the remaining features!
+[⬆ Jump back to the top ⬆](#technical-checklist)!
