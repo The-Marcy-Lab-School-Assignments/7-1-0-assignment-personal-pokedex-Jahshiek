@@ -33,7 +33,7 @@ Tired of hearing this yet? Do them first!
 
 ## Technical Checklist
 
-There are 14 tasks to complete and 2 bonuses.
+There are 11 tasks to complete and 2 bonuses.
 
 Your goal is to meet at least 75% of these requirements to complete the assignment. But don't stop there! Shoot for 100%!
 
@@ -45,8 +45,6 @@ Your goal is to meet at least 75% of these requirements to complete the assignme
 - [ ] Bonus: A user can additionally filter pokemon by HP
 
 **React Fundamentals**
-- [ ] Component names use PascalCase (`MyComponent` instead of `myComponent`)
-- [ ] Props are extracted in child components using destructuring
 - [ ] `useState` is used to manage state
 - [ ] `useEffect` is used to perform an asynchronous fetch call.
 - [ ] The form must be a controlled component.
@@ -54,8 +52,7 @@ Your goal is to meet at least 75% of these requirements to complete the assignme
 - [ ] The project uses `useContext` at least once
 
 **Miscellaneous**
-- [ ] Used Vite to create the project
-- [ ] Each component is in its own file (1 export per file)
+- [ ] Props are extracted in child components using destructuring
 - [ ] At no point did you ever use any vanilla DOM JS methods (e.g. `document.querySelector` or `document.createElement`)
 - [ ] Bonus: Your project has some extra CSS styling!
 
