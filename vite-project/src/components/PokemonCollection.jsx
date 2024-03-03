@@ -8,7 +8,7 @@ const PokemonCollection = () => {
 
     return (
         <div className="ui six cards">
-            {pokemon.map(pokemon => <PokemonCard key={pokemon.id} />)}
+            {pokemon?.map(pokemon => <PokemonCard key={pokemon.id} />)}
         </div>
     )
 }
