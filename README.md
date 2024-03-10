@@ -45,9 +45,9 @@ Your goal is to meet at least 75% of these requirements to complete the assignme
 - [ ] Bonus: A user can additionally filter pokemon by HP
 
 **React Fundamentals**
-- [ ] `useState` is used to manage state
-- [ ] `useEffect` is used to perform an asynchronous fetch call.
-- [ ] The form must be a controlled component.
+- [ ] `useState` is used to manage state. This is done in the Context Provider file at least once.
+- [ ] `useEffect` is used to perform an asynchronous fetch call. This is done in the Context Provider file at least once.
+- [ ] The form must be a controlled component. The `value` prop of the `input` elements should be set to a state value and `onChange` should update that state value.
 - [ ] The project uses React Context.
 - [ ] The project uses `useContext` at least once
 
