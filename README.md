@@ -33,7 +33,7 @@ Tired of hearing this yet? Do them first!
 
 ## Technical Checklist
 
-There are 11 tasks to complete and 2 bonuses.
+There are 11 tasks to complete and 1 bonus.
 
 Your goal is to meet at least 75% of these requirements to complete the assignment. But don't stop there! Shoot for 100%!
 
@@ -54,7 +54,6 @@ Your goal is to meet at least 75% of these requirements to complete the assignme
 **Miscellaneous**
 - [ ] Props are extracted in child components using destructuring
 - [ ] At no point did you ever use any vanilla DOM JS methods (e.g. `document.querySelector` or `document.createElement`)
-- [ ] Bonus: Your project has some extra CSS styling!
 
 **Note:** We are requiring you use React Context for this assignment, however it does not mean that Context is necessarily the right tool for this job. For a project this small, Context may not be the best solution. However, for now, use it!
 
