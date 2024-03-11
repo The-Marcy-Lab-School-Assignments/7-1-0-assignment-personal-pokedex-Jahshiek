@@ -65,7 +65,9 @@ In one terminal, run `npm install` to set up dependencies. Then run `npm run dev
 
 In another terminal, run `npm i -g json-server` to globally install the `json server` CLI tool (if you don't already have it).
 
-Then, run `json-server --watch db.json --port 4000` to start a mock back-end server on port 4000. Now, you will have a RESTful API that you can access via the URL `http://localhost:4000/pokemon`.
+> If you can't install `json-server` globally, install it locally by removing the `-g` flag.
+
+Then, run `npx json-server db.json --port 4000` to start a mock back-end server on port 4000. Now, you will have a RESTful API that you can access via the URL `http://localhost:4000/pokemon`.
 
 ![](./images/split-terminal.gif)
 
