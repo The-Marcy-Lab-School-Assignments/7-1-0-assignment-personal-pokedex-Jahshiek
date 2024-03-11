@@ -63,7 +63,9 @@ Make sure you `cd` into the project directory.
 
 In one terminal, run `npm install` to set up dependencies. Then run `npm run dev` to start the React App. This is your Front-End.
 
-In another terminal, run `json-server --watch db.json --port 4000` to start a mock back-end server on port 4000. If you get an error, make sure you have JSON server installed globally by running `npm install -g json-server`. Now, you will have a RESTful API that you can access via the URL `http://localhost:4000/pokemon`.
+In another terminal, run `npm i -g json-server` to globally install the `json server` CLI tool (if you don't already have it).
+
+Then, run `json-server --watch db.json --port 4000` to start a mock back-end server on port 4000. Now, you will have a RESTful API that you can access via the URL `http://localhost:4000/pokemon`.
 
 ![](./images/split-terminal.gif)
 
