@@ -14,17 +14,16 @@ In this assignment, you will build a React front-end application for browsing yo
 - [Technical Checklist](#technical-checklist)
 - [Set Up](#set-up)
   - [JSON Server API](#json-server-api)
-  - [A Reminder About POSTing](#a-reminder-about-posting)
 - [Steps For Completing The First Feature In Assignment:](#steps-for-completing-the-first-feature-in-assignment)
-  - [0. Check out the PokemonCollection](#0-check-out-the-pokemoncollection)
   - [1. Create the context](#1-create-the-context)
   - [2. Complete the Provider component](#2-complete-the-provider-component)
   - [3. Wrap the App in the provider](#3-wrap-the-app-in-the-provider)
-  - [4. One More Step To Test:](#4-one-more-step-to-test)
-  - [5. Fix the `PokemonCard`](#5-fix-the-pokemoncard)
-  - [6. Fetch Pokemon Data](#6-fetch-pokemon-data)
+  - [4. Fetch Pokemon Data](#4-fetch-pokemon-data)
+  - [5. Test](#5-test)
+  - [6. Use the Context](#6-use-the-context)
+  - [7. Fix the `PokemonCard`](#7-fix-the-pokemoncard)
 - [You're on your own now](#youre-on-your-own-now)
-  - [Tip: Posting Sprites](#tip-posting-sprites)
+  - [A Reminder About POSTing](#a-reminder-about-posting)
   - [Bonus:](#bonus)
 
 ## Short Responses
@@ -39,9 +38,9 @@ Your goal is to meet at least 75% of these requirements to complete the assignme
 
 **Functionality**
 - [ ] On load of the page, a user see a list of pokemon cards displaying each pokemon's name, front sprite, and HP level.
-- [ ] A user can fill out and submit the form to create a new pokemon. This will display the new pokemon on the page and the new pokemon data should persist, even after the page is refreshed. This means you'll have to make a POST request to our JSON Server API!
-- [ ] A user can use the search bar to filter pokemon by name.
 - [ ] A user can click on a pokemon card to toggle seeing its front sprite or back sprite.
+- [ ] A user can use the search bar to filter pokemon by name.
+- [ ] A user can fill out and submit the form to create a new pokemon. This will display the new pokemon on the page and the new pokemon data should persist, even after the page is refreshed. This means you'll have to make a POST request to our JSON Server API!
 - [ ] Bonus: A user can additionally filter pokemon by HP
 
 **React Fundamentals**
@@ -76,39 +75,13 @@ You will be using the API endpoint `http://localhost:4000/pokemon` for sending b
 * When sending a GET request, you will receive the `pokemon` JSON data in the `db.json` file.
 * When sending a POST request, the request body will be added to `pokemon` array in that same file.
 
-### A Reminder About POSTing
-* When POSTing, you will need to include a `Content-Type: application/json` header.
-* For the `body` of the request, see the data structure of the existing pokemon in `db.json` as an example of what to include in the `body`.
-* See the example below of sending a POST request with `fetch` and an `options` object.
-
-```js
-const exampleOptions = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ key: "value" }),
-};
-const url = "http://example.com/api";
-const response = await fetch(url, exampleOptions);
-const data = await response.json();
-```
-
 ## Steps For Completing The First Feature In Assignment:
 
 We'll walk through the process of fetching pokemon data and providing it via context to the entire application.
 
-### 0. Check out the PokemonCollection
-
-Open up `src/components/PokemonCollection`. This component demonstrates the basics of how to use context and we're giving it to you for free!
-
-Check out how we import the `PokemonContext` and then use the `useContext` hook to bring in the required data (and only the required data) into the component.
-
-Finally, see how we use the `pokemon` data to render a list of `PokemonCard` components.
-
-But it doesn't work... Why? The `PokemonContext` doesn't exist yet and because the application hasn't been provided that context. Let's do that!
-
 ### 1. Create the context
+
+For this project, we want to fetch an array of `allPokemon` objects and share that data throughout the entire application. Context to the rescue!
 
 Open up the `src/context/PokemonContext.jsx` file. This is where you'll create your context and export it.
 
@@ -139,7 +112,9 @@ You'll regularly return to this file as you build the features of this applicati
 1. Start by importing the `PokemonContext` you just created.
 2. Then, return a `PokemonContext.Provider`, making sure to wrap the `children` prop.
 3. Set `value` prop on the `PokemonContext.Provider` to `contextValues`.
-4. Add the `pokemon` and `setPokemon` state values to the `contextValues` object.
+4. Add the `allPokemon` and `setAllPokemon` state values to the `contextValues` object.
+
+As you add more state values to the context, you'll add those values to `contextValues`
 
 Check out this example for reference:
 
@@ -149,8 +124,9 @@ import CountContext from './CountContext';
 
 const CountContextProvider = ({children}) => {
   const [count, setCount] = useState(0);
+  const [otherState, setOtherState] = useState(null);
 
-  const contextValues = { count, setCount }
+  const contextValues = { count, setCount, otherState, setOtherState }
 
   return (
     <CountContext.Provider value={contextValues}>
@@ -159,8 +135,6 @@ const CountContextProvider = ({children}) => {
   )
 }
 ```
-
-As you add more state values to the context, you'll add those values to `contextValues`
 
 ### 3. Wrap the App in the provider
 
@@ -179,57 +153,53 @@ return (
 );
 ```
 
-### 4. One More Step To Test:
+### 4. Fetch Pokemon Data
 
-At this point, you should have properly linked everything up. Your application now has context!
-
-To test this out, recall that the `PokemonCollection` component is set up to use the `pokemon` value provided by the `PokemonContext`. However, nothing is rendered yet because the `pokemon` array is empty!
-
-Head back to `src/context/PokemonProvider.jsx` and modify the code where the initial pokemon state is set up like so:
-
-```jsx
-// add this example object
-const examplePokemon = {
-  id: 12,
-  name: "butterfree",
-  hp: 60,
-  front: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
-  back: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/12.png"
-}
-// and insert into the array 3 times.
-const [pokemon, setPokemon] = useState([examplePokemon, examplePokemon, examplePokemon]);
-```
-
-Save your code, run your dev server, and you should see 3 rendered `PokemonCard` components without any data! (we'll work on getting the data to show next).
-
-If this didn't see three blank `PokemonCard` components, go back through the first three steps before moving on.
-
-### 5. Fix the `PokemonCard`
-
-Open up the `src/components/PokemonCard` file and you'll see that there is a structure provided for you, but the content is incomplete. Each `PokemonCard` should display the front image of the pokemon, their name, and their HP (health points).
-
-The data for these cards are not properly hooked up yet so you will need to work in the `src/components/PokemonCollection` file to pass the appropriate props to each card, and render the pokemon data in the card.
-
-### 6. Fetch Pokemon Data
-
-To populate the data in the `pokemon` array with "real" data, we need to fetch from the JSON server database that you should have up and running. If you don't have it running yet, run
+To populate the data in the `allPokemon` array with "real" data, we need to fetch from the JSON server database that you should have up and running. If you don't have it running yet, run
 
 ```sh
 npm i -D json-server # skip this if you have json-server already installed
 json-server --watch db.json --port 4000
 ```
 
-If you want, you can import the `fetch` helper function defined in the `src/utils.js` file:
+To help you out, we've already imported the `handleFetch` helper function defined in the `src/utils/handleFetch.js` file.
 
 Then, do the following in your `PokemonProvider`:
 
-1. Remove the `examplePokemon` from your initial `pokemon` state. `pokemon` should start as an empty array.
 1. Import `useEffect`
 2. Invoke `useEffect` with a callback that fetches from your local JSON server API which should have the URL `"http://localhost:4000/pokemon"`.
-3. If data is returned, it should update the `pokemon` state value.
+3. If data is returned, it should update the `allPokemon` state value.
 4. Make sure that this effect only runs once when the application first renders.
 
-If this worked properly, your `PokemonProvider` will re-render with the new `pokemon` values provided. As a result, you should see 12 cards.
+If this worked properly, your `PokemonProvider` will re-render with the new `allPokemon` values provided.
+
+### 5. Test
+
+Before you move on, we should test to make sure that we're properly fetching the data!
+
+Add a `console.log(pokemon)` statement to your `PokemonProvider` so that each time the provider component re-renders it prints out the current `allPokemon` state. You should see the `starterPokemon` appear first, followed by the fetched pokemon.
+
+**Q: Why do you see two console logs instead of just the fetched data?**
+
+### 6. Use the Context
+
+At this point, your context should be shared throughout the entire application. Now its time to use it!
+
+In `PokemonCollection`, the component is trying to render an array of `allPokemon`, but that value is currently hard-coded as an empty array.
+
+Instead, get the `allPokemon` from the `PokemonContext`!.
+
+Save your code, run your dev server, and you should see 12 rendered `PokemonCard` components. They won't have any data but we'll fix that next.
+
+If this didn't see the blank `PokemonCard` components, go back through the first 5 steps before moving on.
+
+### 7. Fix the `PokemonCard`
+
+Open up the `src/components/PokemonCard` file and you'll see that there is a structure provided for you, but the content is incomplete. Each `PokemonCard` should display the front image of the pokemon, their name, and their HP (health points).
+
+The data for these cards are not properly hooked up yet so you will need to work in the `src/components/PokemonCollection` file to pass the appropriate props to each card, and render the pokemon data in the card.
+
+You should now see all of your pokemon cards appear with data!
 
 ## You're on your own now
 
@@ -237,7 +207,25 @@ At this point, we've practiced using context, `useEffect`, `useState`, and props
 
 You got this!
 
-### Tip: Posting Sprites
+See below for some tips or [⬆ jump back to the top ⬆](#technical-checklist) to see the remaining items on the technical checklist.
+
+### A Reminder About POSTing
+* When POSTing, you will need to include a `Content-Type: application/json` header.
+* For the `body` of the request, see the data structure of the existing pokemon in `db.json` as an example of what to include in the `body`.
+* See the example below of sending a POST request with `fetch` and an `options` object.
+
+```js
+const exampleOptions = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ key: "value" }),
+};
+const url = "http://example.com/api";
+const response = await fetch(url, exampleOptions);
+const data = await response.json();
+```
 
 When posting new pokemon to the database, you'll need to include sprites for the front and back of the pokemon.
 
