@@ -162,7 +162,7 @@ To populate the data in the `allPokemon` array with "real" data, we need to fetc
 
 ```sh
 npm i -D json-server # skip this if you have json-server already installed
-json-server --watch db.json --port 4000
+json-server db.json --port 4000
 ```
 
 To help you out, we've already imported the `handleFetch` helper function defined in the `src/utils/handleFetch.js` file.
