@@ -32,7 +32,7 @@ Tired of hearing this yet? Do them first!
 
 ## Technical Checklist
 
-There are 11 tasks to complete and 2 bonuses.
+There are 11 tasks to complete and 1 bonus.
 
 Your goal is to meet at least 75% of these requirements to complete the assignment. But don't stop there! Shoot for 100%!
 
@@ -44,16 +44,15 @@ Your goal is to meet at least 75% of these requirements to complete the assignme
 - [ ] Bonus: A user can additionally filter pokemon by HP
 
 **React Fundamentals**
-- [ ] `useState` is used to manage state
-- [ ] `useEffect` is used to perform an asynchronous fetch call.
-- [ ] The form must be a controlled component.
+- [ ] `useState` is used to manage state. This is done in the Context Provider file at least once.
+- [ ] `useEffect` is used to perform an asynchronous fetch call. This is done in the Context Provider file at least once.
+- [ ] The form must be a controlled component. The `value` prop of the `input` elements should be set to a state value and `onChange` should update that state value.
 - [ ] The project uses React Context.
 - [ ] The project uses `useContext` at least once
 
 **Miscellaneous**
 - [ ] Props are extracted in child components using destructuring
 - [ ] At no point did you ever use any vanilla DOM JS methods (e.g. `document.querySelector` or `document.createElement`)
-- [ ] Bonus: Your project has some extra CSS styling!
 
 **Note:** We are requiring you use React Context for this assignment, however it does not mean that Context is necessarily the right tool for this job. For a project this small, Context may not be the best solution. However, for now, use it!
 
@@ -63,7 +62,11 @@ Make sure you `cd` into the project directory.
 
 In one terminal, run `npm install` to set up dependencies. Then run `npm run dev` to start the React App. This is your Front-End.
 
-In another terminal, run `json-server --watch db.json --port 4000` to start a mock back-end server on port 4000. If you get an error, make sure you have JSON server installed globally by running `npm install -g json-server`. Now, you will have a RESTful API that you can access via the URL `http://localhost:4000/pokemon`.
+In another terminal, run `npm i -g json-server` to globally install the `json server` CLI tool (if you don't already have it).
+
+> If you can't install `json-server` globally, install it locally by removing the `-g` flag.
+
+Then, run `npx json-server db.json --port 4000` to start a mock back-end server on port 4000. Now, you will have a RESTful API that you can access via the URL `http://localhost:4000/pokemon`.
 
 ![](./images/split-terminal.gif)
 
